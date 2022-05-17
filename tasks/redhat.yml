@@ -1,14 +1,18 @@
 ---
-- name: redhat | Installing NFS Package
+- name: redhat-installing-nfs-package
   yum:
     name: "nfs-utils"
     state: "present"
   become: true
   when: ansible_distribution != "Fedora"
+  tags: 
+    - package
 
-- name: redhat | Installing NFS Package
+- name: redhat-installing-nfs-package
   dnf:
     name: "nfs-utils"
     state: "present"
   become: true
   when: ansible_distribution == "Fedora"
+  tags: 
+    - package
